@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Job Portal{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <nav>
+    <a href="/dashboard">Job Portal</a>
+    {% if session.get('user_id') %}
+      <a href="/jobs">Browse Jobs</a>
+      {% if session.get('role') == 'recruiter' %}
+        <a href="/post_job">Post Job</a>
+        <a href="/my_jobs">My Jobs</a>
+      {% else %}
+        <a href="/my_applications">My Applications</a>
+      {% endif %}
+      <a class="right" href="/logout">Logout</a>
+    {% else %}
+      <a class="right" href="/login">Login</a>
+      <a href="/register">Register</a>
+    {% endif %}
+  </nav>
+  <main>
+    {% with messages = get_flashed_messages() %}
+      {% for m in messages %}<div class="flash">{{ m }}</div>{% endfor %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

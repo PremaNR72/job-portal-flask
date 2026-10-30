@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Edit Job{% endblock %}
+{% block content %}
+<div class="card">
+  <h2>Edit job</h2>
+  <form method="POST" class="stack">
+    <input name="title" value="{{ job.title }}" placeholder="Job title" required>
+    <input name="company" value="{{ job.company }}" placeholder="Company">
+    <input name="location" value="{{ job.location }}" placeholder="Location">
+    <input name="salary" value="{{ job.salary }}" placeholder="Salary">
+    <textarea name="description" rows="5" placeholder="Description">{{ job.description }}</textarea>
+    <button type="submit">Save changes</button>
+    <a href="/my_jobs">Cancel</a>
+  </form>
+</div>
+{% endblock %}

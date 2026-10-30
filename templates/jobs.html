@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Available Jobs{% endblock %}
+
+{% block content %}
+
+<h2>Available Jobs</h2>
+
+<form method="GET" class="row" style="margin-bottom:14px;">
+    <input
+        type="text"
+        name="q"
+        value="{{ q }}"
+        placeholder="Search by title or location"
+        style="padding:9px; flex:1; border:1px solid #bbb; border-radius:6px;"
+    >
+    <button type="submit">Search</button>
+</form>
+
+{% for job in jobs %}
+
+<div class="card">
+    <h3>{{ job.title }}</h3>
+
+    <p>
+        {{ job.company }} |
+        {{ job.location }} |
+        {{ job.salary }}
+    </p>
+
+    <p class="muted">{{ job.description }}</p>
+
+    {% if session.get('role') == 'jobseeker' %}
+        {% if job.id in applied_ids %}
+            <span class="badge">Already applied</span>
+        {% else %}
+            <a class="btn" href="/apply/{{ job.id }}">Apply Now</a>
+        {% endif %}
+    {% endif %}
+</div>
+
+{% else %}
+<p>No jobs found.</p>
+{% endfor %}
+
+{% endblock %}

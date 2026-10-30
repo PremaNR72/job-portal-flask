@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}My Jobs{% endblock %}
+{% block content %}
+<div class="row" style="justify-content:space-between;">
+  <h2>My posted jobs</h2>
+  <a class="btn" href="/post_job">+ Post a new job</a>
+</div>
+{% for job in jobs %}
+<div class="card">
+  <h3>{{ job.title }} - {{ job.company }}</h3>
+  <p>{{ job.location }} | {{ job.salary }}</p>
+  <p class="muted">Applicants: {{ job.applications|length }}</p>
+  <div class="row">
+    <a class="btn" href="/job/{{ job.id }}/applicants">View applicants</a>
+    <a class="btn" href="/edit_job/{{ job.id }}">Edit</a>
+    <form method="POST" action="/delete_job/{{ job.id }}"
+          onsubmit="return confirm('Delete this job and its applications?');">
+      <button type="submit" class="danger">Delete</button>
+    </form>
+  </div>
+</div>
+{% else %}
+<p>You have not posted any jobs yet.</p>
+{% endfor %}
+{% endblock %}

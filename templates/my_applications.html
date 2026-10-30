@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}My Applications{% endblock %}
+{% block content %}
+<h2>My applications</h2>
+{% for a in apps %}
+<div class="card">
+  <h3>{{ a.job.title }}</h3>
+  <p>{{ a.job.company }} | {{ a.job.location }}</p>
+  <span class="badge {{ a.status }}">{{ a.status }}</span>
+</div>
+{% else %}
+<p>You have not applied to any jobs yet. <a href="/jobs">Browse jobs</a></p>
+{% endfor %}
+{% endblock %}

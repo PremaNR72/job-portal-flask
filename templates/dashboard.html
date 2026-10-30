@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<div class="card">
+  <h2>Welcome, {{ user.name }}</h2>
+  <p class="muted">Logged in as {{ user.role }}</p>
+  <div class="row">
+    <a class="btn" href="/jobs">Browse Jobs</a>
+    {% if user.role == 'recruiter' %}
+      <a class="btn" href="/post_job">Post a Job</a>
+      <a class="btn" href="/my_jobs">My Jobs and Applicants</a>
+    {% else %}
+      <a class="btn" href="/my_applications">My Applications</a>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

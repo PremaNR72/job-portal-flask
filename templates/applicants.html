@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Applicants{% endblock %}
+{% block content %}
+<h2>Applicants for: {{ job.title }}</h2>
+<p><a href="/my_jobs">Back to my jobs</a></p>
+<table>
+  <tr><th>Name</th><th>Email</th><th>Status</th><th>Change status</th></tr>
+  {% for a in apps %}
+  <tr>
+    <td>{{ a.applicant.name }}</td>
+    <td>{{ a.applicant.email }}</td>
+    <td><span class="badge {{ a.status }}">{{ a.status }}</span></td>
+    <td>
+      <form method="POST" action="/application/{{ a.id }}/status" class="row">
+        <select name="status">
+          {% for s in statuses %}
+            <option value="{{ s }}" {% if s == a.status %}selected{% endif %}>{{ s }}</option>
+          {% endfor %}
+        </select>
+        <button type="submit">Update</button>
+      </form>
+    </td>
+  </tr>
+  {% else %}
+  <tr><td colspan="4">No applicants yet.</td></tr>
+  {% endfor %}
+</table>
+{% endblock %}

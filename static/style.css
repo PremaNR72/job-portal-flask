@@ -1,0 +1,17 @@
+* { box-sizing: border-box; }
+body { font-family: Arial, sans-serif; margin: 0; background: #f4f6f9; color: #222; }
+nav { background: #1f4e8c; padding: 12px 24px; display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
+nav a { color: #fff; text-decoration: none; font-weight: bold; }
+nav .right { margin-left: auto; }
+main { max-width: 900px; margin: 24px auto; padding: 0 16px; }
+.card { background: #fff; border-radius: 8px; padding: 18px; margin-bottom: 14px; box-shadow: 0 1px 4px rgba(0,0,0,.1); }
+.flash { background: #fff3cd; border: 1px solid #e6d28a; padding: 10px 14px; border-radius: 6px; margin-bottom: 12px; }
+form.stack input, form.stack select, form.stack textarea { display: block; width: 100%; padding: 10px; margin: 8px 0 14px; border: 1px solid #bbb; border-radius: 6px; font-size: 15px; }
+button, .btn { background: #1f4e8c; color: #fff; border: 0; padding: 9px 16px; border-radius: 6px; cursor: pointer; text-decoration: none; font-size: 14px; display: inline-block; }
+button.danger { background: #b3261e; }
+.muted { color: #666; font-size: 14px; }
+.badge { padding: 3px 10px; border-radius: 12px; font-size: 13px; background: #e8eefb; }
+.badge.Accepted { background: #d7f2dc; } .badge.Rejected { background: #f9d6d3; }
+table { width: 100%; border-collapse: collapse; background: #fff; }
+th, td { padding: 10px; border-bottom: 1px solid #ddd; text-align: left; }
+.row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
